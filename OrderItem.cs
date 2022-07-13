@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Atividade9.Entities
 {
@@ -28,6 +24,12 @@ namespace Atividade9.Entities
         public double SubTotal()
         {
             return Quantity * Price;
+        }
+
+        public override string ToString()
+        {
+            return Product.Name + ", Quantity : " + Quantity + " Subtotal : " + SubTotal().ToString("F2", CultureInfo.InvariantCulture);
+                
         }
 
 

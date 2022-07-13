@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Atividade9.Entities
 {
@@ -36,27 +36,36 @@ namespace Atividade9.Entities
             Itens.Remove(itens);
         }
 
+        public double Total()
+        {
+            double soma = 0.0;
+            foreach(OrderItem item in Itens)
+            {
+                
+                soma += soma + item.SubTotal();
+            }
+            return soma;
+        }
+
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("ORDER SUMMARY: ");
-            sb.Append("Order moment: ");
-            sb.Append(Moment);
-            sb.Append("Order status: ");
-            sb.Append(Status);
-            sb.Append("Client : ");
-            sb.Append(Client.Name);
-            sb.Append(Client.Birtday);
+            sb.AppendLine("ORDER SUMMARY");
+            sb.AppendLine("Order Moment : " + Moment.ToString("G"));
+            sb.AppendLine("Order status : " + Status);
+            sb.AppendLine("Client : " + Client);
+            sb.AppendLine("Order items : ");
 
-            sb.Append("Order items: ");
-            
-            foreach (OrderItem o in Itens)
+            foreach(OrderItem item in Itens)
             {
-
-                sb.Append(o.Product); sb.Append(o.Quantity); sb.Append(o.Price);
+                sb.AppendLine(item.ToString());
+                
             }
-            
+
+            sb.AppendLine("Total price: $" + Total().ToString("F2", CultureInfo.InvariantCulture));
+
+
 
             return sb.ToString();
         }

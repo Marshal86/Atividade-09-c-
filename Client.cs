@@ -22,5 +22,10 @@ namespace Atividade9.Entities
             Email = email;
             Birtday = birtday;
         }
+
+        public override string ToString()
+        {
+           return Name + ", ("+ Birtday.ToString("dd/MM/yyyy")+ ") - "+ Email;
+        }
     }
 }
