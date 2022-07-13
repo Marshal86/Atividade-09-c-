@@ -48,12 +48,14 @@ namespace Atividade9
 
             }
 
-            pedido.ToString();
+            Console.WriteLine();
+            Console.WriteLine("ORDER SUMMARY:");
+            Console.WriteLine(pedido);
 
 
 
 
-          
+
 
         }
     }
